@@ -1,0 +1,23 @@
+const a = 9;
+const b = '8';
+const c = 'value';
+const d = 23;
+let e = null;
+let f = 8;
+
+console.log(a > d);
+console.log(b < d);
+console.log(b <= f);
+f = 9;
+console.log(a >= f);
+console.log(a == f);
+f = '9';
+console.log(a == f);
+console.log(a === f);
+console.log(a !== d || a == f);
+console.log(a && b);
+console.log(a && null);
+f = 'value';
+console.log(!d);
+console.log(!!f === c);
+console.log(e ?? c);
