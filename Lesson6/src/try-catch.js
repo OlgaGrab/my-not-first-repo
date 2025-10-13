@@ -1,23 +1,17 @@
-function getApiData() {
-    return fetch('https://nonexisting.oo');
-}
-
-function getCorrectData() {
-    return {
-        answer: 'not found',
-        status: 404
-    };
+async function getApiData(requestUrl) {
+    const response = await fetch(requestUrl);
+    if (response.ok !== true) {
+        throw new Error('fetch failed');
+    }
+    return response.json();
 }
 
 try {
-    await getApiData();
+    await getApiData('https://nonexisting.oo');
 } catch (error) {
     console.log(error.message);
     if (error.message.includes('fetch failed')) {
-        const response = getCorrectData();
+        const response = await getApiData('https://jsonplaceholder.typicode.com/todos/1');
         console.log(response);
-        if (response.status != 200) {
-            throw new Error('Invalid response, try later');
-        }
     }
 }
